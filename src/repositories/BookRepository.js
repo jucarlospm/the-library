@@ -1,6 +1,6 @@
 import mongo from '../helpers/mongoHelper';
 import redis from '../helpers/redisHelper';
-import Book from '../Models/Book';
+import Book from '../models/Book';
 
 module.exports = class BookRepository {
   constructor() {
