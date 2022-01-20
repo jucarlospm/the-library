@@ -1,5 +1,5 @@
 import logger from '@condor-labs/logger';
-import BookRepository from './../repositories/BookRepository';
+import BookRepository from '../repositories/BookRepository';
 import { checkBook } from '../filters/bookFilter';
 
 const bookRepository = new BookRepository();
