@@ -6,7 +6,8 @@
   "scripts": {
     "build": "babel src -d dist --source-maps",
     "start": "nodemon src/index.js --exec babel-node",
-    "serve": "node dist/index.js"
+    "serve": "node dist/index.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Juan Carlos Peña",
@@ -28,6 +29,7 @@
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.7",
     "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.16.10",
     "@babel/preset-env": "^7.16.8",
     "@condor-labs/eslint-config": "^1.2.0",
     "@condor-labs/prettier-config": "^1.1.0",
