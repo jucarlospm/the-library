@@ -1,0 +1,37 @@
+{
+  "name": "thelibrary",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist --source-maps",
+    "start": "nodemon src/index.js --exec babel-node",
+    "serve": "node dist/index.js"
+  },
+  "keywords": [],
+  "author": "Juan Carlos Peña",
+  "license": "ISC",
+  "dependencies": {
+    "@condor-labs/health-middleware": "^1.2.3",
+    "@condor-labs/logger": "^1.1.0",
+    "@condor-labs/matchbox": "^1.6.0",
+    "@condor-labs/mongodb": "^1.1.3",
+    "@condor-labs/redis": "^1.0.4",
+    "@graphql-tools/schema": "^8.3.1",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.8.0",
+    "jest": "^27.4.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
+    "@condor-labs/eslint-config": "^1.2.0",
+    "@condor-labs/prettier-config": "^1.1.0",
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1"
+  }
+}
