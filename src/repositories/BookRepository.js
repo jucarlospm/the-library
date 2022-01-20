@@ -62,8 +62,6 @@ module.exports = class BookRepository {
       return await this.redis.getCacheData(`book:${key}`);
     } catch (error) {
       throw new Error(error);
-    } finally {
-      await this.redis.quit();
     }
   }
 
@@ -72,8 +70,6 @@ module.exports = class BookRepository {
       await this.redis.setCacheData(`book:${key}`, data);
     } catch (error) {
       throw new Error(error);
-    } finally {
-      await this.redis.quit();
     }
   }
 
@@ -82,8 +78,6 @@ module.exports = class BookRepository {
       await this.redis.deleteCacheData(`book:${key}`);
     } catch (error) {
       throw new Error(error);
-    } finally {
-      await this.redis.quit();
     }
   }
 };

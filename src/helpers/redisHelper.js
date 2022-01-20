@@ -44,9 +44,6 @@ const helper = {
     await redisBatch.del(key);
     return redisBatch.execAsync();
   },
-  quit: async () => {
-    await redisBatch.quit();
-  },
 };
 
 module.exports = helper;
