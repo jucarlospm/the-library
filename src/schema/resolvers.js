@@ -1,6 +1,6 @@
 import logger from '@condor-labs/logger';
 import BookRepository from '../repositories/BookRepository';
-import { checkBook } from '../filters/bookFilter';
+import { checkBook, checkBookTitle } from '../filters/bookFilter';
 
 const bookRepository = new BookRepository();
 
@@ -37,7 +37,7 @@ export const resolvers = {
     createBook: async (_, { book }) => {
       try {
         book = checkBook(book);
-        const findBook = await bookRepository.find({ title: book.title });
+        const findBook = await bookRepository.find({ title: { $regex : new RegExp(book.title, "i") } });
         if (findBook.length > 0) {
           throw new Error('This title already exists in the library');
         }
@@ -48,7 +48,8 @@ export const resolvers = {
     },
     updateBook: async (_, { _id, book }) => {
       try {
-        let findBook = await bookRepository.find({ title: book.title });
+        book = checkBook(book);
+        let findBook = await bookRepository.find({ title: { $regex : new RegExp(book.title, "i") } });
         if (findBook.length > 0) {
           throw new Error('This title already exists in the library');
         }

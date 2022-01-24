@@ -4,7 +4,7 @@ export const checkBook = (book) => {
   }
 
   if (!book.author) {
-    throw new Error('Title is required');
+    throw new Error('Author is required');
   }
 
   if (book.pages <= 0) {
@@ -15,5 +15,9 @@ export const checkBook = (book) => {
     book.status = 'AVAILABLE';
   }
 
-  return book;
+  return {
+    ...book,
+    title: book.title.trim(),
+    author: book.author.trim()
+  };
 };
