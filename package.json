@@ -12,6 +12,9 @@
   "keywords": [],
   "author": "Juan Carlos Peña",
   "license": "ISC",
+  "jest": {
+    "testPathIgnorePatterns": ["dist"]
+  },
   "dependencies": {
     "@condor-labs/health-middleware": "^1.2.3",
     "@condor-labs/logger": "^1.1.0",

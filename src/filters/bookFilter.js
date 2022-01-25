@@ -15,6 +15,10 @@ export const checkBook = (book) => {
     book.status = 'AVAILABLE';
   }
 
+  if (['LENT', 'AVAILABLE', 'UNAVAILABLE'].indexOf(book.status) < 0) {
+    throw new Error('Invalid status');
+  }
+    
   return {
     ...book,
     title: book.title.trim(),
