@@ -17,13 +17,13 @@ jobs:
         id: set-vars
         run: |
           if [[ "${{ github.base_ref }}" == "master" || "${{ github.ref }}" == "refs/heads/master" || "${{ github.base_ref }}" == "main" || "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "::set-output name=deployment-api-auth-name::secret.DEPLOYMENT_API_AUTH"
+            echo "::set-output name=deployment-api-auth-name::secrets.DEPLOYMENT_API_AUTH"
           fi
           if [[ "${{ github.base_ref }}" == "demo" || "${{ github.ref }}" == "refs/heads/demo" ]]; then
-            echo "::set-output name=deployment-api-auth-name::secret.DEPLOYMENT_API_AUTH_DEMO"
+            echo "::set-output name=deployment-api-auth-name::secrets.DEPLOYMENT_API_AUTH_DEMO"
           fi
           if [[ "${{ github.base_ref }}" == "test" || "${{ github.ref }}" == "refs/heads/test" ]]; then
-            echo "::set-output name=deployment-api-auth-name::secret.DEPLOYMENT_API_AUTH_TEST"
+            echo "::set-output name=deployment-api-auth-name::secrets.DEPLOYMENT_API_AUTH_TEST"
           fi
   deploy:
     runs-on: "ubuntu-latest"
