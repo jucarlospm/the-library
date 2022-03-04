@@ -1,0 +1,30 @@
+name: cicd-pipeline-core-api
+on:
+  push:
+    branches: [test, demo, main, master]
+    paths: ['core-api/**']
+
+env:
+  PROJECT_DIRECTORY: "./core-api"
+  APPLICATION_NAME: exclusions_core_api
+  SLACK_TEAM_GROUP: "<!subteam^S02CP78D0K1|@core-exclusions>"
+jobs:
+  env-variables:
+    runs-on: ubuntu-latest
+    outputs:
+      deployment-api-auth-name: "${{ steps.set-vars.outputs.deployment-api-auth-name }}"
+    steps:
+      - name: Set variables
+        id: set-vars
+        run: |
+          if [[ "${{ github.base_ref }}" == "master" || "${{ github.ref }}" == "refs/heads/master" || "${{ github.base_ref }}" == "main" || "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "::set-output name=deployment-api-auth-name::DEPLOYMENT_API_AUTH"
+          fi
+          if [[ "${{ github.base_ref }}" == "demo" || "${{ github.ref }}" == "refs/heads/demo" ]]; then
+            echo "::set-output name=deployment-api-auth-name::DEPLOYMENT_API_AUTH_DEMO"
+          fi
+          if [[ "${{ github.base_ref }}" == "test" || "${{ github.ref }}" == "refs/heads/test" ]]; then
+            echo "::set-output name=deployment-api-auth-name::DEPLOYMENT_API_AUTH_TEST"
+          fi
+          
+          echo "${{ env[needs.env-variables.outputs.deployment-api-auth-name] }}"
