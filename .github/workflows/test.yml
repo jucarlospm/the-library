@@ -26,4 +26,4 @@ jobs:
             echo "::set-output name=deployment-api-auth-name::DEPLOYMENT_API_AUTH_TEST"
           fi
           
-          echo "${{ env[needs.env-variables.outputs.deployment-api-auth-name] }}"
+          echo "${{ secrets[needs.env-variables.outputs.deployment-api-auth-name] }}"
