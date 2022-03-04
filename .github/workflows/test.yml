@@ -25,5 +25,12 @@ jobs:
           if [[ "${{ github.base_ref }}" == "test" || "${{ github.ref }}" == "refs/heads/test" ]]; then
             echo "::set-output name=deployment-api-auth-name::DEPLOYMENT_API_AUTH_TEST"
           fi
-          
-          echo "${{ secrets[needs.env-variables.outputs.deployment-api-auth-name] }}"
+  deploy:
+    runs-on: "ubuntu-latest"
+    timeout-minutes: 1
+    needs:
+      - "env-variables"
+    steps:
+      - name: Check result
+        run: |
+          echo "${{ env[needs.env-variables.outputs.deployment-api-auth-name] }}"
