@@ -33,4 +33,4 @@ jobs:
     steps:
       - name: Check result
         run: |
-          echo "${{ secrets[needs.env-variables.outputs.deployment-api-auth-name] }}"
+          echo "${{ needs.env-variables.outputs.deployment-api-auth-name }}"
