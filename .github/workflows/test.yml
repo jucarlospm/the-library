@@ -2,7 +2,6 @@ name: cicd-pipeline-core-api
 on:
   push:
     branches: [test, demo, main, master]
-    paths: ['core-api/**']
 
 env:
   PROJECT_DIRECTORY: "./core-api"
